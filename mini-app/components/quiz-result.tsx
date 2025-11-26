@@ -25,6 +25,14 @@ export function QuizResult({ animal, onRetake }: Props) {
     horse: "Horse",
   };
 
+  const animalFoods: Record<string, string> = {
+    cat: "fish",
+    dog: "bones",
+    fox: "berries",
+    hamster: "seeds",
+    horse: "carrots",
+  };
+
   const animalVoices: Record<string, string> = {
     cat: "meow",
     dog: "bark",
@@ -36,7 +44,7 @@ export function QuizResult({ animal, onRetake }: Props) {
   return (
     <div className="flex flex-col items-center gap-4">
       <h2 className="text-2xl font-semibold">
-        You’re most like a {animalNames[animal]}! ({animalVoices[animal]})
+        You’re most like a {animalNames[animal]}! (likes {animalFoods[animal]})
       </h2>
       <img
         src={animalImages[animal]}
@@ -45,7 +53,7 @@ export function QuizResult({ animal, onRetake }: Props) {
         height={512}
         className="rounded"
       />
-      <Share text={`I’m most like a ${animalNames[animal]}! ${animalVoices[animal]} ${url}`} />
+      <Share text={`I’m most like a ${animalNames[animal]}! Likes ${animalFoods[animal]} ${url}`} />
       <button
         className="px-4 py-2 bg-secondary text-secondary-foreground rounded hover:bg-secondary/90"
         onClick={onRetake}
